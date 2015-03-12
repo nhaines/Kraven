@@ -1,21 +1,19 @@
 __author__ = 'nhaines'
 
-from neo4django.db import models
+from django.db import models
 
 
-class Person(models.NodeModel):
-    first = models.StringProperty()
-    last = models.StringProperty()
+class Asset(models.Model):
+    sha1 = models.CharField(max_length=20, blank=False, null=False, unique=True)
+    md5 = models.CharField(max_length=16, blank=False, null=False, unique=True)
+
+    def __unicode__(self):
+        return unicode(self.sha1)
 
 
-class User(Person):
-    username = models.StringProperty(null=False)
-    email = models.EmailProperty()
+class Path(models.Model):
+    asset = models.ForeignKey(Asset)
+    path = models.CharField(max_length=255, blank=False, null=False, unique=True)
 
-
-class Asset(models.NodeModel):
-    sha1 = models.StringProperty(min_length=20, max_length=20, unique=True)
-    paths = models.StringArrayProperty()
-    title = models.StringProperty()
-
-
+    def __unicode__(self):
+        return unicode(self.url)

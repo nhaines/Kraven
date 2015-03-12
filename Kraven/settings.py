@@ -30,15 +30,8 @@ DATABASES = {
     }
 }
 
-NEO4J_DATABASES = {
-    'default': {
-        'HOST': 'localhost',
-        'PORT': 7474,
-        'ENDPOINT': '/db/data'
-    }
-}
+SESSION_ENGINE = 'django.contrib.sessions.backends.file'
 
-DATABASE_ROUTERS = ['neo4django.utils.Neo4djangoIntegrationRouter']
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.4/ref/settings/#allowed-hosts
@@ -140,9 +133,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admindocs',
+
+    'Kraven'
 )
 
 # A sample logging configuration. The only tangible logging
